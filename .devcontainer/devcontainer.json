@@ -1,0 +1,40 @@
+{
+  "image": "rocker/binder:4.3",
+  "settings": {
+        "markdown.preview.security.level": "allow-insecure-local-content",
+        "extensions.ignoreRecommendations": true,
+        "git.enableSmartCommit": true,
+        "git.confirmSync": false,
+        "git.postCommitCommand": "sync",
+        "git.autofetch": true,
+        "githubPullRequests.createOnPublishBranch": "never",
+        "git.useEditorAsCommitInput": false,
+        "git.rebaseWhenSync": true,
+        "terminal.integrated.ignoreProcessKeybindingWarnings": true,
+        "files.exclude": {
+          ".devcontainer.json": true,
+          "**/.github": true,
+          "**/.devcontainer": true,
+          ".gitignore": true,
+          "**/tests": true
+        }
+  },
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+      "packages": "languageserver,quantmod,xts,PerformanceAnalytics,dtplyr,data.table"
+    },
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {
+      "installTinyTex": "false"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "reditorsupport.r",
+        "ms-toolsai.jupyter",
+        "jaydesl.vscode-r-arrow",
+        "mathematic.vscode-pdf"
+      ]
+    }
+  }
+}
