@@ -1,6 +1,9 @@
 {
-  "image": "rocker/binder:4.3",
-  "settings": {
+  "name": "Python Teaching Container",
+  "postCreateCommand": "pip install pandas matplotlib bs4 requests lxml",
+  "customizations": {
+    "vscode": {
+      "settings": {
         "markdown.preview.security.level": "allow-insecure-local-content",
         "extensions.ignoreRecommendations": true,
         "git.enableSmartCommit": true,
@@ -14,26 +17,15 @@
         "files.exclude": {
           ".devcontainer.json": true,
           "**/.github": true,
-          "**/.devcontainer": true,
-          ".gitignore": true,
-          "**/tests": true
+          "**/.devcontainer": true
         }
-  },
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-      "packages": "languageserver,quantmod,xts,PerformanceAnalytics,dtplyr,data.table"
-    },
-    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {
-      "installTinyTex": "false"
-    }
-  },
-  "customizations": {
-    "vscode": {
+      },
       "extensions": [
-        "reditorsupport.r",
-        "ms-toolsai.jupyter",
-        "jaydesl.vscode-r-arrow",
-        "mathematic.vscode-pdf"
+        "ms-python.python",
+        "searking.preview-vscode",
+        "mathematic.vscode-pdf",
+        "noahsyn10.pydoctestbtn",
+        "ms-toolsai.jupyter"
       ]
     }
   }

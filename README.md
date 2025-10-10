@@ -1,26 +1,27 @@
 # R in Jupyter
 
-This repository provides a template for any teaching requiring R in a Jupyter Notebook.
+This repository provides a template for any teaching requiring Python in VS Code.
 It is designed to be run through a GitHub Codespace (the config sits in `devcontainer`),
 but you can prepare a local setup using the instructions at the bottom of this page.
 
 > [!IMPORTANT]  
-> Consider editing or removing `README` and `sample-notebook`s before sharing with students.
+> Consider editing or removing `README` before sharing with students.
 
-## RMarkdown to Jupyter
+## Packages
 
-In Jupyter (`ipynb`), you can create two broad types of *cells* - **Markdown** and **Code** -
-by hovering above or below a current cell, or by using the menu at the top of the window.
+You can pre-install any packages for learners by modifying the `devcontainer.json` file,
+by adding to the `postCreateCommand`.
 
-To change from RMarkdown to Jupyter, copy code from between the Rmd code fences ```{r} and ```
-(but not the fences themselves) and paste it into ipynb **Code cells**. Everything else is Markdown
-so can be copied across into **Markdown cells**.
+```json
+  "postCreateCommand": "pip install pandas matplotlib bs4 requests lxml",
+```
 
-Chunk options (for example to silence warnings or add captions) are different in Jupyter. You
-can read up on them [here](https://quarto.org/docs/reference/cells/cells-jupyter.html).
+## Jupyter
 
-See the `sample-notebook` files in this repository for an example of converting between the
-formats.
+Jupyter (`ipynb`) provides a Notebook format for Python. You can create two broad types
+of *cells* - **Markdown** and **Code** - by hovering above or below a current cell, or by
+using the menu at the top of the window.
+
 
 ## GitHub
 
@@ -63,41 +64,22 @@ Troubleshooting:
 - A common problem is a student with multiple accounts trying to accept an Assignment with a non-linked account
 
 
-## R, VS Code, Jupyter - Locally
-
+## Python, VS Code, Jupyter - Locally
 For anyone wishing to replicate this setup locally, these are the instructions:
 
-1. [Install R](https://cloud.r-project.org) (>= 3.4.0)
+1. [Install Python](https://www.python.org/downloads/) (>= 3.10)
 
 2. [Install VS Code](https://code.visualstudio.com/download)
 
-3. In R, install the `languageserver` and `IRkernel` packages. 
-    <br>Then run `IRkernel::installspec()`
-
-    ```R
-    install.packages('languageserver')
-    install.packages('IRkernel')
-    IRkernel::installspec()
-    ```
+3. Install the required Python packages:
+   ```bash
+   pip install jupyter ipykernel
+   ```
 
 4. In VS Code, search for and install the following extensions:
-    - R (REditorSupport)
-    - Jupyter (Microsoft)
-    - R Arrow Operator (Jay)
-    - PDF Viewer (Mathematic Inc)
+   - Python (Microsoft)
+   - Jupyter (Microsoft)
+   - Preview (Haixin Chen)
+   - Python Doctest Button (Noah Synowiec)
+   - PDF Viewer (Mathematic Inc)
 
-### To render PDF from Jupyter
-
-1. [Install Quarto](https://quarto.org/docs/get-started/)
-
-2. Install TinyTex with Quarto
-
-    ```bash
-    quarto install tinytex
-    ```
-
-3. Use the `Render to PDF` button at the top of the Notebook, or run
-
-    ```bash
-    quarto render path_to_notebook.ipynb --to pdf
-    ```
